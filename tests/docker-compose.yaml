@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  aws-cli:
+    image: emzian7/aws-cli:latest
+    command: while true; do sleep 10; echo "sleeping"; done
+    environment:
+      SECRETS_TO_ENV_DEBUG: "true"
+    secrets:
+      - AWS_ACCESS_KEY_ID
+      - AWS_SECRET_ACCESS_KEY
+
+secrets:
+  AWS_ACCESS_KEY_ID:
+    file: AWS_ACCESS_KEY_ID
+  AWS_SECRET_ACCESS_KEY:
+    file: AWS_SECRET_ACCESS_KEY
