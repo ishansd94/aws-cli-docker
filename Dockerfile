@@ -20,7 +20,7 @@ RUN useradd -K MAIL_DIR=/var/mail -ms /bin/sh ${CONTAINER_USER}
 
 USER ${CONTAINER_USER}
 
-# Versions: https://pypi.org/project/awscli/#history
+
 ENV PATH ${PATH}:/home/${CONTAINER_USER}/.local/bin
 
 ENV AWS_ACCESS_KEY_ID {{DOCKER-SECRET:AWS_ACCESS_KEY_ID}}
@@ -30,6 +30,7 @@ ENV CONTAINER_USER ${CONTAINER_USER}
 
 WORKDIR /home/${CONTAINER_USER}
 
+# Versions: https://pypi.org/project/awscli/#history
 RUN pip --no-cache-dir install awscli==${AWS_CLI_VERSION} --user
 
 COPY scripts .scripts
